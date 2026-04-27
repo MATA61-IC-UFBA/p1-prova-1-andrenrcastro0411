@@ -6,18 +6,22 @@
 extern int yylex();
 extern int yyparse();
 void yyerror(const char *msg);
-
 %}
 
 %token ERROR
-
+%token NUM IDENT STRING
+%token PRINT CONCAT LENGTH
+%token ASSIGN LPAREN RPAREN COMMA
+%token PLUS MINUS TIMES DIV
+%left PLUS MINUS
+%left TIMES DIV
 %start program
 
 %%
 
-/* programa */
 program
-: stmt_list 
+: stmt_list
+|
 ;
 
 stmt_list
@@ -32,7 +36,5 @@ stmt
 ;
 
 expr
-/* completar */
-
-%%
-
+: expr PLUS expr
+| expr MINUS expr
