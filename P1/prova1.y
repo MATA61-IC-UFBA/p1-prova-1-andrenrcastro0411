@@ -38,3 +38,19 @@ stmt
 expr
 : expr PLUS expr
 | expr MINUS expr
+| expr TIMES expr
+| expr DIV expr
+| LPAREN expr RPAREN
+| NUM
+| IDENT
+| STRING
+| CONCAT LPAREN exprlist RPAREN
+| LENGTH LPAREN expr RPAREN
+;
+
+exprlist
+: expr
+| exprlist COMMA expr
+;
+
+%%
